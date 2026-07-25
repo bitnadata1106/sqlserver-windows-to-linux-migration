@@ -38,8 +38,8 @@ FROM sales.salesorderheader
 UNION ALL
 
 SELECT
-    'Sales.SalesOrderDetail',
-    COUNT(*)
+    'Sales.SalesOrderDetail' AS table_name,
+    COUNT(*) AS row_count
 FROM sales.salesorderdetail
 
 UNION ALL
