@@ -1,0 +1,50 @@
+# SQL Mini CI
+# - SQL 파일 변경 시 자동 실행
+# - 필수 SQL 파일 존재 여부 검사
+# - 하드코딩된 비밀번호 패턴 검사
+# - SQLFluff로 T-SQL 정적 품질 검사
+# - 모든 검사를 통과한 변경만 후속 CD 단계로 전달 가능
+
+name: SQL Mini CI
+
+on:
+  push:
+    paths:
+      - "sql/**/*.sql"
+      - ".github/workflows/sql-ci.yml"
+  pull_request:
+    paths:
+      - "sql/**/*.sql"
+      - ".github/workflows/sql-ci.yml"
+
+jobs:
+  sql-quality-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install SQLFluff
+        run: pip install sqlfluff
+
+      - name: Check required SQL files
+        run: |
+          test -s sql/mart/mart_vw_monthly_sales.sql
+          test -s sql/tests/test_monthly_sales_view.sql
+          test -s sql/validation/validate_adventureworks.sql
+
+      - name: Scan for hard-coded passwords
+        run: |
+          if grep -RniE "(password|passwd|pwd)[[:space:]]*[:=]" sql; then
+            echo "Hard-coded credential pattern detected."
+            exit 1
+          fi
+
+      - name: Lint T-SQL files
+        run: sqlfluff lint sql --dialect tsql
