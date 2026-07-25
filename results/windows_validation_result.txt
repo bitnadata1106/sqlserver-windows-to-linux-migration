@@ -1,0 +1,81 @@
+name
+--------------------------------------------------------------------------------------------------------------------------------
+master
+tempdb
+model
+msdb
+AdventureWorks2014
+
+(5 rows affected)
+
+database_name                                                                                                                    state_desc                                                   recovery_model_desc                                          compatibility_level
+-------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------ ------------------------------------------------------------ -------------------
+AdventureWorks2014                                                                                                               ONLINE                                                       SIMPLE                                                       120
+
+(1 row affected)
+
+schema_count table_count view_count  procedure_count
+------------ ----------- ----------- ---------------
+9            71          20          10
+
+(1 row affected)
+
+table_name                    row_count
+----------------------------- -----------
+Sales.SalesOrderHeader        31465
+Sales.SalesOrderDetail        121317
+Production.Product            504
+Sales.SalesTerritory          10
+Production.ProductCategory    4
+Production.ProductSubcategory 37
+
+(6 rows affected)
+
+order_count order_detail_count total_order_quantity total_line_amount                       avg_line_amount
+----------- ------------------ -------------------- --------------------------------------- ---------------------------------------
+31465       121317             274914               109846381.40                            905.45
+
+(1 row affected)
+
+order_count total_subtotal                          total_tax                               total_freight                           total_due
+----------- --------------------------------------- --------------------------------------- --------------------------------------- ---------------------------------------
+31465       109846381.40                            10186974.46                             3183430.25                              123216786.12
+
+(1 row affected)
+
+min_order_date          max_order_date          min_due_date            max_due_date            min_ship_date           max_ship_date
+----------------------- ----------------------- ----------------------- ----------------------- ----------------------- -----------------------
+2011-05-31 00:00:00.000 2014-06-30 00:00:00.000 2011-06-12 00:00:00.000 2014-07-12 00:00:00.000 2011-06-07 00:00:00.000 2014-07-07 00:00:00.000
+
+(1 row affected)
+
+null_order_id null_order_date null_customer_id null_territory_id
+------------- --------------- ---------------- -----------------
+0             0               0                0
+
+(1 row affected)
+
+SalesOrderID duplicate_count
+------------ ---------------
+
+(0 rows affected)
+
+SalesOrderID SalesOrderDetailID duplicate_count
+------------ ------------------ ---------------
+
+(0 rows affected)
+
+orphan_order_detail_count
+-------------------------
+0
+
+(1 row affected)
+
+orphan_product_count
+--------------------
+0
+
+(1 row affected)
+
+
+Completion time: 2026-07-25T15:50:00.4514223+00:00
