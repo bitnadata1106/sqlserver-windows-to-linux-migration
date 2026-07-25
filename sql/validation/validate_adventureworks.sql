@@ -46,7 +46,7 @@ UNION ALL
 
 SELECT
     'Production.Product' AS table_name,
-    COUNT(*) AS row_count   
+    COUNT(*) AS row_count
 FROM production.product
 
 UNION ALL
