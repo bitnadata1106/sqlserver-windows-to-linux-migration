@@ -45,29 +45,29 @@ FROM sales.salesorderdetail
 UNION ALL
 
 SELECT
-    'Production.Product',
-    COUNT(*)
+    'Production.Product' AS table_name,
+    COUNT(*) AS row_count   
 FROM production.product
 
 UNION ALL
 
 SELECT
-    'Sales.SalesTerritory',
-    COUNT(*)
+    'Sales.SalesTerritory' AS table_name,
+    COUNT(*) AS row_count
 FROM sales.salesterritory
 
 UNION ALL
 
 SELECT
-    'Production.ProductCategory',
-    COUNT(*)
+    'Production.ProductCategory' AS table_name,
+    COUNT(*) AS row_count
 FROM production.productcategory
 
 UNION ALL
 
 SELECT
-    'Production.ProductSubcategory',
-    COUNT(*)
+    'Production.ProductSubcategory' AS table_name,
+    COUNT(*) AS row_count
 FROM production.productsubcategory;
 GO
 
